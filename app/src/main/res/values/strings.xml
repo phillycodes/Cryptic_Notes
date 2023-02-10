@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Cryptic Notes</string>
+    <string name="loginbtn">LogIn</string>
 </resources>

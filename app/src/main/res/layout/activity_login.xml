@@ -58,7 +58,7 @@
             android:inputType="textEmailAddress"
             android:padding="16dp"
             android:background="@drawable/rounded_corner"
-            android:textSize="28sp" />
+            android:textSize="22sp" />
 
         <EditText
             android:layout_width="match_parent"
@@ -69,7 +69,7 @@
             android:inputType="textPassword"
             android:padding="16dp"
             android:background="@drawable/rounded_corner"
-            android:textSize="28sp" />
+            android:textSize="22sp" />
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"

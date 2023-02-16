@@ -3,6 +3,7 @@ package com.example.crypticnotes;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +14,9 @@ public class NoteDetailsActivity extends AppCompatActivity {
 
     EditText titleEditText, contentEditText;
     ImageButton saveNoteBtn;
+    TextView pageTitleTextView;
+    String title, content, docId;
+    boolean isEditMode = false;
 
 
     @Override
@@ -23,6 +27,23 @@ public class NoteDetailsActivity extends AppCompatActivity {
         titleEditText = findViewById(R.id.notes_title_text);
         contentEditText = findViewById(R.id.notes_content_text);
         saveNoteBtn = findViewById(R.id.save_note_btn);
+        pageTitleTextView = findViewById(R.id.page_title);
+
+        //receive data
+        title = getIntent().getStringExtra("title");
+        content = getIntent().getStringExtra("content");
+        docId = getIntent().getStringExtra("docId");
+
+        if(docId != null && !docId.isEmpty()){
+            isEditMode = true;
+        }
+
+        titleEditText.setText(title);
+        contentEditText.setText(content);
+
+        if(isEditMode){
+            pageTitleTextView.setText("Edit your note");
+        }
 
         saveNoteBtn.setOnClickListener((v) -> saveNote());
 
@@ -46,7 +67,14 @@ public class NoteDetailsActivity extends AppCompatActivity {
 
     void saveNoteToFirebase (Note note) {
         DocumentReference documentReference;
-        documentReference = Utility.getCollectionReferenceForNotes().document();
+        if(isEditMode){
+            //update note selected
+            documentReference = Utility.getCollectionReferenceForNotes().document(docId);
+        } else {
+            //create a new note
+            documentReference = Utility.getCollectionReferenceForNotes().document();
+
+        }
 
         documentReference.set(note).addOnCompleteListener(task -> {
             if(task.isSuccessful()){

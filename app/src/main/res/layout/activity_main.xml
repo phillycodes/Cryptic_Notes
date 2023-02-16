@@ -4,8 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="12dp"
     android:background="@color/primary_color"
     tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title_bar_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/page_title"
+            android:text="Notes"
+            android:textSize="32sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
+
+        <ImageButton
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:id="@+id/menu_btn"
+            android:src="@drawable/baseline_menu_24"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            app:tint="@color/white"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+
+
+    </RelativeLayout>
+    
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recycler_view"
+        android:layout_below="@+id/title_bar_layout"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_note_btn"
@@ -16,7 +50,5 @@
         android:layout_margin="12dp"
         android:backgroundTint="@color/white"
         android:src="@drawable/baseline_note_add_24" />
-
-
 
 </RelativeLayout>

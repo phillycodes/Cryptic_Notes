@@ -1,6 +1,7 @@
 package com.example.crypticnotes;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ public class NoteDetailsActivity extends AppCompatActivity {
     TextView pageTitleTextView;
     String title, content, docId;
     boolean isEditMode = false;
+    TextView deleteNoteTVBtn;
 
 
     @Override
@@ -28,31 +30,34 @@ public class NoteDetailsActivity extends AppCompatActivity {
         contentEditText = findViewById(R.id.notes_content_text);
         saveNoteBtn = findViewById(R.id.save_note_btn);
         pageTitleTextView = findViewById(R.id.page_title);
+        deleteNoteTVBtn = findViewById(R.id.delete_note_textview_btn);
 
         //receive data
         title = getIntent().getStringExtra("title");
         content = getIntent().getStringExtra("content");
         docId = getIntent().getStringExtra("docId");
 
-        if(docId != null && !docId.isEmpty()){
+        if (docId != null && !docId.isEmpty()) {
             isEditMode = true;
         }
 
         titleEditText.setText(title);
         contentEditText.setText(content);
 
-        if(isEditMode){
+        if (isEditMode) {
             pageTitleTextView.setText("Edit your note");
+            deleteNoteTVBtn.setVisibility(View.VISIBLE);
         }
 
         saveNoteBtn.setOnClickListener((v) -> saveNote());
+        deleteNoteTVBtn.setOnClickListener((v) -> deleteNoteFromFirebase());
 
     }
 
     void saveNote() {
         String noteTitle = titleEditText.getText().toString();
         String noteContent = contentEditText.getText().toString();
-        if(noteTitle == null || noteTitle.isEmpty()) {
+        if (noteTitle == null || noteTitle.isEmpty()) {
             titleEditText.setError("Title is required");
             return;
         }
@@ -65,9 +70,22 @@ public class NoteDetailsActivity extends AppCompatActivity {
 
     }
 
-    void saveNoteToFirebase (Note note) {
+    void deleteNoteFromFirebase() {
         DocumentReference documentReference;
-        if(isEditMode){
+        documentReference = Utility.getCollectionReferenceForNotes().document(docId);
+        documentReference.delete().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                Utility.showToast(NoteDetailsActivity.this, "Note deleted successfully");
+                finish();
+            } else {
+                Utility.showToast(NoteDetailsActivity.this, "Failed while deleting note");
+            }
+        });
+    }
+
+    void saveNoteToFirebase(Note note) {
+        DocumentReference documentReference;
+        if (isEditMode) {
             //update note selected
             documentReference = Utility.getCollectionReferenceForNotes().document(docId);
         } else {
@@ -77,7 +95,7 @@ public class NoteDetailsActivity extends AppCompatActivity {
         }
 
         documentReference.set(note).addOnCompleteListener(task -> {
-            if(task.isSuccessful()){
+            if (task.isSuccessful()) {
                 Utility.showToast(NoteDetailsActivity.this, "Note added successfully");
                 finish();
             } else {

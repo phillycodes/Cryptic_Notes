@@ -4,41 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="12dp"
     android:background="@color/primary_color"
+    android:padding="12dp"
     tools:context=".MainActivity">
 
     <RelativeLayout
+        android:id="@+id/title_bar_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/title_bar_layout">
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/notes_title"
-            android:textSize="32sp"
             android:textColor="@color/white"
-            android:textStyle="bold"/>
+            android:textSize="32sp"
+            android:textStyle="bold" />
 
         <ImageButton
+            android:id="@+id/menu_btn"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:id="@+id/menu_btn"
-            android:src="@drawable/baseline_menu_24"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            app:tint="@color/white"
-            android:background="?attr/selectableItemBackgroundBorderless"/>
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/menu_description"
+            android:src="@drawable/baseline_menu_24"
+            app:tint="@color/white" />
 
 
     </RelativeLayout>
-    
+
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recycler_view"
-        android:layout_below="@+id/title_bar_layout"/>
+        android:layout_below="@+id/title_bar_layout" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_note_btn"
@@ -48,6 +49,7 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="12dp"
         android:backgroundTint="@color/white"
+        android:contentDescription="@string/add_note_description"
         android:src="@drawable/baseline_note_add_24" />
 
 </RelativeLayout>

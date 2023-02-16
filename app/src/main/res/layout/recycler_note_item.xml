@@ -1,38 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="12dp"
     android:layout_marginVertical="8dp"
+    android:background="@drawable/rounded_corner"
     android:backgroundTint="@color/white"
-    android:background="@drawable/rounded_corner">
+    android:orientation="vertical"
+    android:padding="12dp">
 
     <TextView
+        android:id="@+id/note_title_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/note_title_text_view"
+        android:layout_marginVertical="4dp"
         android:text="note title"
         android:textColor="@color/black"
-        android:textSize="18sp"
-        android:layout_marginVertical="4dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/note_content_text_view"
-        android:text="note content"
-        android:maxLines="2"
-        android:ellipsize="end"
-        android:textSize="17sp"
-        android:layout_marginVertical="4dp"/>
+        android:textSize="18sp" />
 
     <TextView
+        android:id="@+id/note_content_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="4dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="note content"
+        android:textSize="17sp" />
+
+    <TextView
         android:id="@+id/note_timestamp_text_view"
-        android:text="timestamp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="4dp"
         android:gravity="right"
-        android:textSize="12sp"
-        android:layout_marginVertical="4dp"/>
+        android:text="timestamp"
+        android:textSize="12sp" />
 
 </LinearLayout>

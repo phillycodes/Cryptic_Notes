@@ -36,22 +36,23 @@ public class LoginActivity extends AppCompatActivity {
         login_Btn.setOnClickListener((v) -> loginUser());
 
     }
-    void loginUser(){
+
+    void loginUser() {
         String email = email_EditText.getText().toString();
         String password = password_EditText.getText().toString();
 
         boolean isValidated = validateData(email, password);
-        if(!isValidated){
+        if (!isValidated) {
             return;
         }
 
         loginAccountInFirebase(email, password);
     }
 
-    void loginAccountInFirebase(String email, String password){
+    void loginAccountInFirebase(String email, String password) {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         changeInProgress(true);
-        firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 changeInProgress(false);
@@ -72,8 +73,8 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    void changeInProgress(boolean inProgress){
-        if(inProgress){
+    void changeInProgress(boolean inProgress) {
+        if (inProgress) {
             progressBar.setVisibility(View.VISIBLE);
             login_Btn.setVisibility(View.GONE);
         } else {
@@ -82,12 +83,12 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    boolean validateData(String email, String password){
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+    boolean validateData(String email, String password) {
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             email_EditText.setError("Email is invalid!");
             return false;
         }
-        if (password.length() < 6 ){
+        if (password.length() < 6) {
             password_EditText.setError("Minimum Characters requirement not met: 6 Character");
             return false;
         }

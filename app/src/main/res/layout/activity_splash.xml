@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary_color"
+    android:gravity="center"
     android:orientation="vertical"
-    android:layout_gravity="center"
     tools:context=".SplashActivity">
 
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:gravity="center|center_vertical"
+        android:gravity="center"
         android:text="@string/app_name"
         android:textColor="@color/white"
         android:textSize="32sp"
@@ -23,8 +21,8 @@
     <ProgressBar
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:layout_gravity="center|center_horizontal|center_vertical"
         android:layout_margin="16dp"
-        android:layout_marginTop="68dp" />
+        android:layout_marginTop="68dp"
+        android:gravity="center" />
 
 </LinearLayout>

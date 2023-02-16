@@ -1,5 +1,16 @@
 <resources>
     <string name="app_name">Cryptic Notes</string>
-    <string name="loginbtn">LogIn</string>
+    <string name="login_btn">LogIn</string>
     <string name="notes_title">Notes</string>
+    <string name="delete_note_tv">Delete Note</string>
+    <string name="welcome_message">Welcome Back</string>
+    <string name="hello_message">Hello.</string>
+    <string name="email_hint">Email Address</string>
+    <string name="password_hint">Password</string>
+    <string name="menu_description">Hamburger Menu Icon</string>
+    <string name="add_note_description">New Note</string>
+    <string name="save_btn_description">Save Note</string>
+    <string name="new_note_title">Add New Note</string>
+    <string name="title_hint">Title</string>
+    <string name="content_hint">Content</string>
 </resources>

@@ -3,6 +3,7 @@ package com.example.crypticnotes;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ImageButton menuBtn;
     NoteAdapter noteAdapter;
+    Button screenBtn;
 
 
     @Override
@@ -31,9 +33,11 @@ public class MainActivity extends AppCompatActivity {
         addNoteBtn = findViewById(R.id.add_note_btn);
         recyclerView = findViewById(R.id.recycler_view);
         menuBtn = findViewById(R.id.menu_btn);
+        screenBtn = findViewById(R.id.speechScreen_btn);
 
         addNoteBtn.setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, NoteDetailsActivity.class)));
         menuBtn.setOnClickListener((v) -> showMenu());
+        screenBtn.setOnClickListener((view -> startActivity(new Intent(MainActivity.this, speech_activity.class))));
         setupRecyclerView();
     }
 

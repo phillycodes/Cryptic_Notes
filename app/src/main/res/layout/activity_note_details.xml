@@ -26,6 +26,16 @@
             android:textSize="32sp"
             android:textStyle="bold" />
 
+        <ImageView
+            android:id="@+id/micButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="false"
+            android:layout_toStartOf="@id/save_note_btn"
+            android:layout_centerInParent="true"
+            android:backgroundTint="#F9F8FA"
+            android:src="@drawable/ic_mic_black_off_foreground" />
+
         <ImageButton
             android:id="@+id/save_note_btn"
             android:layout_width="44dp"
